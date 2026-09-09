@@ -31,17 +31,22 @@
 
 \def \addressSep {$\diamond$}         % Set default address seperator
 
-% One or two address lines can be specified 
+% One, two or three address lines can be specified 
 \let \@addressone \relax
 \let \@addresstwo \relax
+\let \@addressthree \relax
 
-% \address command can be used to set first and second address (optional)
+% \address command can be used to set first, second and third address
 \def \address #1{
+  \@ifundefined{@addressone}{
+    \def \@addressone {#1}
+  }{
   \@ifundefined{@addresstwo}{
     \def \@addresstwo {#1}
   }{
-    \def \@addressone {#1}
-  }
+  \@ifundefined{@addressthree}{
+  \def \@addressthree {#1}
+  }}}
 }
 
 % \printaddress is used to style an address line (given as input)
@@ -72,6 +77,8 @@
     \printaddress{\@addressone}}
   \@ifundefined{@addresstwo}{}{     % Print the second address if specified
     \printaddress{\@addresstwo}}
+  \@ifundefined{@addressthree}{}{   % Print the third address if specified
+    \printaddress{\@addressthree}}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

@@ -18,8 +18,12 @@
 
 \usepackage[parfill]{parskip}       % Do not indent paragraphs
 \usepackage{array}                  % required for boldface tabular columns
+\usepackage{hyperref}
 \usepackage{ifthen}
 
+\hypersetup{
+  hidelinks                         % keep links clickable but with no styles
+}
 \nofiles                            % .aux files are not needed for resumes
 \pagestyle{empty}                   % resumes do not need page numbers
 
